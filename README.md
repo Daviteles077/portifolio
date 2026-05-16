@@ -88,7 +88,11 @@ Nem só de código vive um cientista de dados! Nas minhas horas livres, você va
 * **💪 Resiliência:** Foco e persistência ao resolver desafios de lógica e bugs complexos.
 
 ---
-
+<div align="center">
+  <a href="https://daviteles077.github.io/portifolio/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐%20Acesse%20Meu%20Portfólio%20Web-Clique%20Aqui-06B6D4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfólio">
+  </a>
+</div>
 
 
 ---
