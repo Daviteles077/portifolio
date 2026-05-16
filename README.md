@@ -89,23 +89,7 @@ Nem só de código vive um cientista de dados! Nas minhas horas livres, você va
 
 ---
 
-## 📬 Vamos conversar?
 
-Se você quiser trocar uma ideia sobre Ciência de Dados, falar sobre carros e motos, ou discutir oportunidades de projetos e estágios, é só me chamar!
-
-<div align="left">
-  <a href="https://github.com/DAVITELES077" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-  </a>
-  <a href="mailto:dviteles@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
-  <a href="https://wa.me/5561991917133" target="_blank">
-    <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" />
-  </a>
-</div>
-
-<br />
 
 ---
 <div align="center">
