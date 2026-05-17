@@ -17,12 +17,6 @@
 
 ---
 
-<div align="center">
-
-  <img src="https://via.placeholder.com/1280x400.png?text=SEU+SUPER+PROJETO+FINAL" alt="Banner do Projeto Final" width="100%" />
-
-  <br />
-
   # 🚀 Projeto Final de Bootcamp: Da Evolução ao Portfólio 💻
 
   <p align="center">
