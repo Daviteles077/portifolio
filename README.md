@@ -32,8 +32,8 @@
   </h3>
 <a href="https://daviteles077.github.io/portiflio-projeto-final-Bootcamp/" 
    target="_blank" 
-   style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-align: center;">
-  ✨ CLIQUE AQUI &raquo; VER PORTFÓLIO
+   style="display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; font-family: 'Segoe UI', sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4); text-align: center;">
+  ✨ ACESSAR MEU PORTFÓLIO &raquo;
 </a>
 
 
