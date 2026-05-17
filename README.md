@@ -17,7 +17,7 @@
 
 ---
 
-  # 🚀 Projeto Final de Bootcamp: Da Evolução ao Portfólio 💻
+  # 🚀 Projeto Intermediario de Bootcamp: Da Evolução ao Portfólio 💻
 
   <p align="center">
     <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge&logo=github" alt="Status Do Projeto">
