@@ -30,11 +30,7 @@
     <span> | </span>
     <a href="#-projeto-final">🏗️ Ver Código do Projeto</a>
   </h3>
-<p align="center">
-  <a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/" target="_blank">
-    <img src="https://img.shields.io/badge/%F0%9F%92%BC_Acessar_Meu_Portf%C3%B3lio-Clique_Aqui-0078D4?style=for-the-badge" alt="Botão de Acesso">
-  </a>
-</p>
+<a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/#contato" style="display: none;"></a>
 
 
 
