@@ -30,8 +30,8 @@
     <span> | </span>
     <a href="#-projeto-final">🏗️ Ver Código do Projeto</a>
   </h3>
-<a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/#contato">
-    <img src="caminho-da-sua-imagem.png" alt="Descrição" style="border: none;">
+<a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/README.md">
+    <img src="caminho-da-sua-imagem.png" alt="Portfólio" style="border: none;">
 </a>
 
 
