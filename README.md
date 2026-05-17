@@ -82,7 +82,7 @@ Para manter a organização entre o portfólio (Pages), o projeto final e o hist
  ├── 📄 style.css              <-- 🎨 Estilização do Portfólio
  ├── 📁 assets                 <-- 🖼️ Imagens e Mídias do Portfólio
  │
- ├── 📁 projeto-final          <-- 🏗️ CÓDIGO-FONTE DO TRABALHO CONCLUSIVO
+ ├── 📁 projeto-intermediario          <-- 🏗️ CÓDIGO-FONTE DO TRABALHO CONCLUSIVO
  │   ├── 📄 README.md          <-- 📑 README específico do projeto final
  │   └── ... (arquivos do app)
  │
