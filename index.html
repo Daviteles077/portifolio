@@ -1,182 +1,634 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davi Teles | Data Science Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Davi Teles | Portfólio - Ciência de Dados & Machine Learning</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        /* Estilos adicionais personalizados para complementar o Tailwind */
+        .tech-badge {
+            @apply px-3 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200 transition-colors duration-200;
+        }
+        .code-block {
+            @apply font-mono text-sm p-4 rounded-lg bg-slate-900 text-slate-100 overflow-x-auto shadow-inner border border-slate-800 my-2 block;
+        }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-blue-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300 antialiased">
 
-    <header class="relative overflow-hidden bg-slate-900 border-b border-slate-800 py-20 px-4 text-center">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
-        <div class="max-w-4xl mx-auto relative z-10">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-4 animate-fade-in">
-                DAVI TELES
-            </h1>
-            <p class="text-lg md:text-2xl text-slate-400 font-medium max-w-2xl mx-auto border-b border-slate-800 pb-6">
-                Data Science Enthusiast • Machine Learning Learner
-            </p>
-            <div class="flex flex-wrap justify-center gap-3 mt-6">
-                <span class="bg-slate-800/80 border border-slate-700 text-xs font-semibold px-3 py-1.5 rounded-md flex items-center gap-2">
-                    <i class="fa-solid fa-database text-yellow-500"></i> Estudante de Dados
-                </span>
-                <span class="bg-slate-800/80 border border-slate-700 text-xs font-semibold px-3 py-1.5 rounded-md flex items-center gap-2">
-                    <i class="fa-brands fa-python text-blue-400"></i> Python Básico
-                </span>
-                <span class="bg-slate-800/80 border border-slate-700 text-xs font-semibold px-3 py-1.5 rounded-md flex items-center gap-2">
-                    <i class="fa-solid fa-table text-blue-500"></i> Noções de SQL
-                </span>
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl tracking-tight text-blue-600 dark:text-blue-400">
+                    <i class="fa-solid fa-chart-network mr-2 text-emerald-500"></i>DaviTeles<span class="text-slate-400 font-normal">.data</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Início</a>
+                    <a href="#sobre" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Sobre</a>
+                    <a href="#formacao" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Formação</a>
+                    <a href="#competencias" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Skills</a>
+                    <a href="#projetos" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Portfólio</a>
+                    <a href="#contato" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contato</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors" title="Alternar tema">
+                        <i id="theme-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 space-y-2">
+            <a href="#home" class="block py-2 text-base font-medium hover:text-blue-600">Início</a>
+            <a href="#sobre" class="block py-2 text-base font-medium hover:text-blue-600">Sobre</a>
+            <a href="#formacao" class="block py-2 text-base font-medium hover:text-blue-600">Formação</a>
+            <a href="#competencias" class="block py-2 text-base font-medium hover:text-blue-600">Skills</a>
+            <a href="#projetos" class="block py-2 text-base font-medium hover:text-blue-600">Portfólio</a>
+            <a href="#contato" class="block py-2 text-base font-medium hover:text-blue-600">Contato</a>
+        </div>
+    </nav>
+
+    <header id="home" class="relative overflow-hidden py-24 lg:py-32 flex items-center border-b border-slate-100 dark:border-slate-900">
+        <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0))] dark:bg-grid-slate-900 dark:[mask-image:linear-gradient(0deg,rgba(15,23,42,0.5),rgba(15,23,42,0))]"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/50 dark:text-blue-300 border border-blue-200 dark:border-blue-900/50">
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span> Graduando em Ciência de Dados
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
+                        Olá, eu sou <br class="hidden sm:inline"><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">Davi Teles</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 font-light">
+                        Estudante de Ciências de Dados e Machine Learning apaixonado por transformar montanhas de dados em soluções reais que facilitam o dia a dia das pessoas e das empresas.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projetos" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/20 transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-folder-open mr-2"></i> Ver Meu Portfólio
+                        </a>
+                        <a href="#contato" class="inline-flex items-center justify-center px-6 py-3 border border-slate-300 dark:border-slate-700 text-base font-semibold rounded-lg text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Entre em Contato
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl bg-gradient-to-tr from-blue-600 to-emerald-400 p-1 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                        <div class="w-full h-full bg-slate-900 rounded-2xl flex flex-col justify-center items-center p-8 text-center text-white space-y-4">
+                            <i class="fa-solid fa-code text-5xl text-emerald-400"></i>
+                            <div>
+                                <h3 class="font-bold text-xl">Davi Teles C. Pontes</h3>
+                                <p class="text-xs text-slate-400 font-mono mt-1">@Daviteles077</p>
+                            </div>
+                            <div class="flex gap-3 text-xl text-slate-300">
+                                <a href="https://github.com/Daviteles077" target="_blank" class="hover:text-blue-400"><i class="fa-brands fa-github"></i></a>
+                                <a href="mailto:dviteles@gmail.com" class="hover:text-blue-400"><i class="fa-solid fa-envelope"></i></a>
+                                <a href="tel:61991917133" class="hover:text-blue-400"><i class="fa-solid fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-12 space-y-16">
-
-        <section class="bg-slate-900/50 border border-slate-800/60 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-            <h2 class="text-2xl font-bold flex items-center gap-3 text-blue-400 mb-4">
-                <i class="fa-solid fa-user"></i> Sobre Mim & Resumo Profissional
-            </h2>
-            <div class="space-y-4 text-slate-300 leading-relaxed">
-                <p>
-                    Apaixonado por dados e tecnologia, sou graduando em Ciência de Dados e Machine Learning. Busco constantemente aprimorar minhas habilidades em Python, SQL e Google Cloud através de aprendizado contínuo e prática. Tenho interesse em integrar equipes colaborativas, contribuindo com proatividade, pensamento analítico e foco em soluções orientadas por dados.
-                </p>
-                <p class="bg-slate-900 border-l-4 border-cyan-500 p-4 rounded-r-xl italic text-slate-400">
-                    "Acredito que o sucesso profissional anda junto com a realização pessoal. Trabalho duro porque tenho muitos sonhos para tirar do papel, e um dos maiores é viajar e conhecer o mundo. Quero que minha carreira na tecnologia seja o motor que me permita explorar novos lugares, culturas e viver experiências incríveis!"
-                </p>
+    <section id="sobre" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500">Resumo Profissional</h2>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">Focado no que vem por aí</p>
+                <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2"></div>
             </div>
-        </section>
-
-        <section class="text-center max-w-2xl mx-auto">
-            <h2 class="text-xl font-bold text-slate-400 tracking-wider uppercase mb-3">🎯 Objetivo Profissional</h2>
-            <p class="text-lg text-slate-300 italic">
-                "Busco atuar na área de Ciência de Dados e Machine Learning, com foco em aprendizado contínuo e aplicação prática de conhecimentos. Meu objetivo é crescer profissional e pessoalmente, contribuindo para projetos inovadores, dominando de verdade as ferramentas para transformar montanhas de dados em soluções que facilitem o dia a dia das pessoas e das empresas."
-            </p>
-        </section>
-
-        <section class="space-y-6">
-            <h2 class="text-2xl font-bold flex items-center gap-3 text-blue-400">
-                <i class="fa-solid fa-graduation-cap"></i> Formação Acadêmica
-            </h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl relative group hover:border-blue-500/50 transition-colors">
-                    <span class="absolute top-4 right-4 text-xs font-semibold px-2 py-1 bg-blue-500/10 text-blue-400 rounded">2026 — 2028</span>
-                    <h3 class="text-lg font-bold text-slate-100 group-hover:text-blue-400 transition-colors">CEUB</h3>
-                    <p class="text-sm text-slate-400 font-medium mb-4">Centro Universitário de Brasília</p>
-                    <p class="text-sm text-slate-300 mb-3"><strong class="text-slate-100">Curso:</strong> Ciência de Dados e ML (1º Período)</p>
-                    <p class="text-xs text-slate-400 bg-slate-950 p-3 rounded border border-slate-800">
-                        <strong>Foco atual:</strong> Listas de Seleção, Listas Sequenciais, Laços de Repetição (<code>while</code>) em Python e Modelagem/Regras de Negócio em Banco de Dados.
-                    </p>
-                </div>
-                <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl relative group hover:border-cyan-500/50 transition-colors">
-                    <span class="absolute top-4 right-4 text-xs font-semibold px-2 py-1 bg-cyan-500/10 text-cyan-400 rounded">2024 — 2025</span>
-                    <h3 class="text-lg font-bold text-slate-100 group-hover:text-cyan-400 transition-colors">SENAC</h3>
-                    <p class="text-sm text-slate-400 font-medium mb-4">SENAC – Brasília/DF</p>
-                    <p class="text-sm text-slate-300"><strong class="text-slate-100">Curso:</strong> Design Gráfico e Audiovisual</p>
-                    <p class="text-sm text-slate-400 mt-2">Desenvolvimento de competências em criação visual, identidade de marca e edição de imagem/vídeo.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="space-y-6">
-            <h2 class="text-2xl font-bold flex items-center gap-3 text-blue-400">
-                <i class="fa-solid fa-code"></i> Habilidades Técnicas
-            </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-xl text-center hover:scale-[1.02] transition-transform">
-                    <i class="fa-brands fa-python text-3xl text-blue-400 mb-2"></i>
-                    <h4 class="font-semibold text-sm">Linguagens</h4>
-                    <p class="text-xs text-slate-400 mt-1">Lógica, Python Básico</p>
-                </div>
-                <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-xl text-center hover:scale-[1.02] transition-transform">
-                    <i class="fa-solid fa-database text-3xl text-emerald-400 mb-2"></i>
-                    <h4 class="font-semibold text-sm">Banco de Dados</h4>
-                    <p class="text-xs text-slate-400 mt-1">MySQL, PostgreSQL</p>
-                </div>
-                <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-xl text-center hover:scale-[1.02] transition-transform">
-                    <i class="fa-solid fa-laptop-code text-3xl text-purple-400 mb-2"></i>
-                    <h4 class="font-semibold text-sm">Ferramentas & IDEs</h4>
-                    <p class="text-xs text-slate-400 mt-1">VSCode, Spyder, DB Designer 4</p>
-                </div>
-                <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-xl text-center hover:scale-[1.02] transition-transform">
-                    <i class="fa-brands fa-google text-3xl text-red-400 mb-2"></i>
-                    <h4 class="font-semibold text-sm">Cloud Computing</h4>
-                    <p class="text-xs text-slate-400 mt-1">Google Cloud Platform</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-900/30 border border-slate-800/80 rounded-2xl p-6 md:p-8">
-            <h2 class="text-2xl font-bold flex items-center gap-3 text-blue-400 mb-6">
-                <i class="fa-solid fa-brain"></i> Competências Comportamentais
-            </h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="flex gap-3">
-                    <i class="fa-solid fa-bullhorn text-cyan-400 mt-1"></i>
-                    <div>
-                        <h4 class="font-semibold text-slate-200">Comunicação Clara</h4>
-                        <p class="text-sm text-slate-400">Transmissão de informações técnicas de forma objetiva para diferentes públicos.</p>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <i class="fa-solid fa-people-group text-cyan-400 mt-1"></i>
-                    <div>
-                        <h4 class="font-semibold text-slate-200">Trabalho Colaborativo</h4>
-                        <p class="text-sm text-slate-400">Foco em ambientes de equipe, prezando pelo compartilhamento de conhecimento.</p>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <i class="fa-solid fa-arrows-spin text-cyan-400 mt-1"></i>
-                    <div>
-                        <h4 class="font-semibold text-slate-200">Flexibilidade</h4>
-                        <p class="text-sm text-slate-400">Capacidade de adaptação ágil a novos desafios e alterações de escopo.</p>
-                    </div>
-                </div>
-                <div class="flex gap-3">
-                    <i class="fa-solid fa-shield-halved text-cyan-400 mt-1"></i>
-                    <div>
-                        <h4 class="font-semibold text-slate-200">Resiliência</h4>
-                        <p class="text-sm text-slate-400">Determinação técnica e foco resolutivo diante de problemas complexos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-slate-900 border-t border-slate-800 mt-20 py-12 px-4 text-center">
-        <div class="max-w-4xl mx-auto space-y-6">
-            <h2 class="text-xl font-bold text-slate-200">Vamos nos conectar?</h2>
-            <p class="text-sm text-slate-400 max-w-sm mx-auto">
-                Disponível para trocas de experiências sobre dados, Machine Learning ou oportunidades de projetos.
-            </p>
             
-            <div class="flex flex-wrap justify-center gap-4 pt-2">
-                <a href="https://github.com/DAVITELES077" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg border border-slate-700 transition-colors">
-                    <i class="fa-brands fa-github text-base"></i> GitHub
-                </a>
-                <a href="mailto:dviteles@gmail.com" class="inline-flex items-center gap-2 bg-red-600/90 hover:bg-red-600 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors">
-                    <i class="fa-solid fa-envelope text-base"></i> Email
-                </a>
-                <a href="https://wa.me/5561991917133" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm px-5 py-2.5 rounded-lg transition-colors">
-                    <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
-                </a>
-            </div>
-
-            <div class="text-xs text-slate-500 pt-8 space-y-1">
-                <p>"Transformando montanhas de dados em soluções práticas." 🚀</p>
-                <p>&copy; Davi Teles. Idioma: Português (Nativo)</p>
+            <div class="space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed text-lg text-justify">
+                <p>
+                    E aí! Atualmente, meu grande foco é mergulhar de cabeça no mundo da <strong>Ciência de Dados e Machine Learning</strong>. Não quero apenas um diploma; meu objetivo é dominar de verdade as ferramentas necessárias para mapear e interpretar grandes ecossistemas de informação, gerando inteligência analítica prática.
+                </p>
+                <p>
+                    Sou apaixonado por transformar dados brutos em soluções eficientes. Minhas experiências acadêmicas englobam o aprendizado prático e conceitual de estruturas complexas, arquitetura de banco de dados relacionais e algoritmos em Python. Com perfil altamente colaborativo, dinâmico e flexível, encaro a tecnologia como o motor definitivo para a realização de grandes projetos corporativos e crescimento profissional mútuo.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 text-left">
+                    <div class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-graduation-cap mr-2 text-emerald-500"></i> Mão na Massa e Aprendizado
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            Meu próximo grande passo é me consolidar no mercado de trabalho. Busco integrar equipes corporativas onde eu possa aplicar ativamente conceitos analíticos, resolver problemas de negócios reais e expandir competências técnicas.
+                        </p>
+                    </div>
+                    <div class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+                        <h4 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center text-blue-600 dark:text-blue-400">
+                            <i class="fa-solid fa-earth-americas mr-2 text-emerald-500"></i> Trabalhar para Realizar
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            Acredito que o sucesso profissional caminha em perfeita harmonia com as realizações pessoais. Dedico-me intensamente para tirar grandes sonhos do papel, e um dos meus maiores objetivos é viajar e explorar o mundo, tendo a tecnologia como passaporte global.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section id="formacao" class="py-20 border-t border-b border-slate-100 dark:border-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500">Formação Acadêmica</h2>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">Minha Jornada Educacional</p>
+                <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="relative border-l border-slate-200 dark:border-slate-800 ml-4 md:ml-32 space-y-12">
+                
+                <div class="relative pl-6 md:pl-8">
+                    <span class="absolute -left-3.5 top-1.5 flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-xs font-bold shadow">
+                        <i class="fa-solid fa-university"></i>
+                    </span>
+                    <div class="absolute right-full mr-6 top-1.5 hidden md:block text-right w-24">
+                        <span class="font-mono font-bold text-blue-600 dark:text-blue-400">2026 — Pres.</span>
+                        <p class="text-xs text-slate-400">Previsão 2028</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <span class="inline-block md:hidden font-mono font-bold text-sm text-blue-600 dark:text-blue-400 mb-1">2026 — Atualmente (Previsão: 2028)</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Ciência de Dados e Machine Learning</h3>
+                        <p class="text-emerald-500 font-medium text-sm mb-3">CEUB — Centro Universitário de Brasília (1º Período)</p>
+                        
+                        <div class="space-y-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-sm text-slate-600 dark:text-slate-400">
+                            <p class="font-semibold text-slate-800 dark:text-slate-200"><i class="fa-solid fa-book-open mr-1 text-blue-500"></i> Disciplinas em Foco:</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 list-disc">
+                                <li>Lógica de Programação (Python Avançado)</li>
+                                <li>Modelagem e Regras de Negócio de Banco de Dados</li>
+                                <li>Álgebra Linear Computacional</li>
+                                <li>Engenharia de Software de Alta Performance</li>
+                                <li>Introdução à Ciência de Dados Prática</li>
+                            </ul>
+                            <p class="text-xs italic bg-slate-50 dark:bg-slate-950 p-3 rounded border border-slate-100 dark:border-slate-800 mt-2">
+                                Detalhes de Aprendizado: Construção ativa de scripts estruturados em laços de repetição personalizados (while/for), manipulação e normalização de listas estruturadas e desenvolvimento de diagramas de fluxo de dados relacionais.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-6 md:pl-8">
+                    <span class="absolute -left-3.5 top-1.5 flex items-center justify-center w-7 h-7 rounded-full bg-emerald-500 text-white text-xs font-bold shadow">
+                        <i class="fa-solid fa-palette"></i>
+                    </span>
+                    <div class="absolute right-full mr-6 top-1.5 hidden md:block text-right w-24">
+                        <span class="font-mono font-bold text-emerald-500">2024 — 2025</span>
+                    </div>
+                    <div class="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+                        <span class="inline-block md:hidden font-mono font-bold text-sm text-emerald-500 mb-1">2024 — 2025</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Design Gráfico e Audiovisual</h3>
+                        <p class="text-emerald-500 font-medium text-sm mb-2">SENAC — Brasília / DF</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Formação focada em processos criativos visuais complexos, técnicas avançadas de edição de imagem e vídeo, design de interface e branding de identidade visual, capacitando a tradução visual técnica e refinada para variados escopos de comunicação.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="competencias" class="py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-16">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500">Habilidades Técnicas e Interpessoais</h2>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">Hard & Soft Skills</p>
+                <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-6">
+                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 flex items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                        <i class="fa-solid fa-laptop-code mr-2 text-emerald-500"></i> Dev & Bancos de Dados
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium">Lógica de Programação & Python</span>
+                                <span class="text-xs font-mono text-slate-400">Intermediário</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full w-3/4"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium">SQL (MySQL / PostgreSQL)</span>
+                                <span class="text-xs font-mono text-slate-400">Noções / Estrutural</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full w-1/2"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-medium">Modelagem Relacional (MER)</span>
+                                <span class="text-xs font-mono text-slate-400">Sólido</span>
+                            </div>
+                            <div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full w-2/3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-4">
+                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 flex items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                        <i class="fa-solid fa-toolbox mr-2 text-emerald-500"></i> Ferramentas & Cloud
+                    </h3>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="tech-badge"><i class="fa-solid fa-square-terminal mr-1 text-blue-500"></i> VSCode</span>
+                        <span class="tech-badge"><i class="fa-solid fa-bug-slash mr-1 text-purple-500"></i> Spyder IDE</span>
+                        <span class="tech-badge"><i class="fa-brands fa-google-drive mr-1 text-yellow-500"></i> Google Cloud</span>
+                        <span class="tech-badge"><i class="fa-solid fa-database mr-1 text-indigo-500"></i> DB Designer 4</span>
+                        <span class="tech-badge"><i class="fa-solid fa-file-code mr-1 text-orange-500"></i> Jupyter Notebooks</span>
+                        <span class="tech-badge"><i class="fa-solid fa-bezier-curve mr-1 text-pink-500"></i> Design Gráfico</span>
+                        <span class="tech-badge"><i class="fa-solid fa-clapperboard mr-1 text-cyan-500"></i> Audiovisual</span>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-2">
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200"><i class="fa-solid fa-language text-emerald-500 mr-1"></i> Idioma Nativo:</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                            <strong>Português (Brasil):</strong> Domínio nativo absoluto, com refinada capacidade de comunicação técnica, clara e objetiva para diferentes públicos e contextos corporativos complexos.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm space-y-3">
+                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 flex items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                        <i class="fa-solid fa-users-gear mr-2 text-emerald-500"></i> Atributos Interpessoais
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400 pt-2">
+                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span><strong>Comunicação Técnica Clara:</strong> Transmissão simplificada de arquiteturas de dados complexas para variados perfis de stakeholders.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span><strong>Trabalho Colaborativo:</strong> Troca horizontal de conhecimento ativo com equipes focadas em objetivos corporativos unificados.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span><strong>Flexibilidade Situacional:</strong> Rápida adaptabilidade operacional diante de mudanças bruscas em escopos de projetos.</span></li>
+                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-500 mr-2 mt-1"></i> <span><strong>Resiliência Técnica:</strong> Persistência analítica estruturada focada em resolver desafios e falhas lógicas complexas.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="py-20 border-t border-slate-100 dark:border-slate-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500">Repositório de Trabalhos Reais</h2>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">Portfólio de Engenharia & Análise</p>
+                <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterProjects('all')" class="project-tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-blue-600 text-white transition-all shadow-sm">Todos</button>
+                <button onclick="filterProjects('pandas')" class="project-tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:bg-slate-200 transition-all">Análise de Dados (Pandas)</button>
+                <button onclick="filterProjects('sql')" class="project-tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:bg-slate-200 transition-all">Bancos de Dados & MER</button>
+                <button onclick="filterProjects('python')" class="project-tab-btn px-4 py-2 text-sm font-semibold rounded-lg bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:bg-slate-200 transition-all">Algoritmos de Lógica (Python)</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="pandas">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-orange-100 text-orange-800 dark:bg-orange-950/40 dark:text-orange-400">Jupyter Notebook (.ipynb)</span>
+                            <i class="fa-solid fa-file-chart-column text-2xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Atividade 2 — Exercícios de Limpeza, Transformação e Agrupamento de Dados</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: pandas_intro_ex2.ipynb</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-4">
+                            Manipulação avançada e estruturação analítica de emendas parlamentares brasileiras via biblioteca Pandas, utilizando o conjunto de dados <code>emendas_parlamentares.parquet</code> contendo 29 colunas estruturais (ex: Código, Ano, Tipo, Valor Empenhado, Liquidado, Pago e Regiões).
+                        </p>
+                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2 mb-4">
+                            <p class="font-bold text-slate-800 dark:text-slate-200"><i class="fa-solid fa-filter mr-1"></i> Consultas Complexas Implementadas:</p>
+                            <p><strong>Query 1:</strong> Filtragem de emendas orçamentárias relativas ao ano de <strong>2022</strong>. Retornou um total exato de <strong>6.108 emendas registradas</strong> no período.</p>
+                            <p><strong>Query 2:</strong> Filtro condicional da Região <strong>Norte</strong> associado à restrição de <code>Valor Empenhado > 500.000</code> para mapeamento de investimentos de alto escalão.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Pandas</span>
+                            <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Parquet</span>
+                        </div>
+                        <button onclick="toggleCode('code-pandas')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Snippets</button>
+                    </div>
+                    <div id="code-pandas" class="hidden mt-4 pt-2">
+                        <span class="code-block">import pandas as pd<br><br># Carga de dados em formato colunar Parquet<br>df = pd.read_parquet('emendas_parlamentares.parquet')<br><br># 1) Filtragem por ano específico<br>df_2022 = df[df['Ano da Emenda'] == 2022]<br>print(f"Total 2022: {df_2022.shape[0]}") # Output: 6108<br><br># 2) Filtro condicional multi-variável de Região e Valor<br>df_norte_alta = df[(df['Região'] == 'Norte') & (df['Valor Empenhado'] > 500000)]</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="sql">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-purple-100 text-purple-800 dark:bg-purple-950/40 dark:text-purple-400">Banco de Dados (.xml)</span>
+                            <i class="fa-solid fa-diagram-project text-2xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Atividade MER Estacionamento — Modelo Relacional</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: Atividade MER estacionamento.xml</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-4">
+                            Mapeamento estrutural detalhado e modelagem lógica de banco de dados relacional para controle operacional de um estacionamento utilizando o software **DB Designer 4** com tipagem nativa para o SGBD **MySQL**.
+                        </p>
+                        <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-lg border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2 mb-4">
+                            <p class="font-bold text-slate-800 dark:text-slate-200"><i class="fa-solid fa-database mr-1"></i> Detalhes Técnicos da Arquitetura:</p>
+                            <p>• <strong>Entidades Mapeadas:</strong> Estruturação de tabelas cruciais como <code>tb_funcionario</code> (gerenciamento de funcionários), contendo restrições de integridade, chaves primárias automáticas e mapeamento de chaves estrangeiras.</p>
+                            <p>• <strong>Regras de Relacionamento:</strong> Definição de gatilhos automáticos relacionais estruturados (ex: <code>Rel_04</code> e <code>Rel_07</code>) contendo cláusulas rígidas de <code>OnDelete=3 (Cascade/No Action)</code> e <code>OnUpdate=3</code> para garantir consistência sistêmica total.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">MySQL</span>
+                            <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">DB Designer 4</span>
+                        </div>
+                        <button onclick="toggleCode('code-xml')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Estrutura XML</button>
+                    </div>
+                    <div id="code-xml" class="hidden mt-4 pt-2">
+                        <span class="code-block">&lt;GLOBALSETTINGS ModelName="Atividade MER estacionamento" DatabaseType="MySQL" /&gt;<br>&lt;TABLE ID="1135" TableName="tb_funcionario"&gt;...&lt;/TABLE&gt;<br>&lt;RELATION ID="1182" RelationName="Rel_04" SrcTable="1135" DestTable="1148" FKFields="id_funcionario=tb_funcionario_id_funcionario" RefDef="OnDelete=3\nOnUpdate=3" /&gt;</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Média Dinâmica de N Números</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_01_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Algoritmo interativo que solicita ao usuário a quantidade dinâmica de valores a serem computados, executa um loop de acumulação com validação sequencial e apresenta a média aritmética final formatada com duas casas decimais.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">While Loop</span>
+                        <button onclick="toggleCode('code-py1')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py1" class="hidden mt-4 pt-2">
+                        <span class="code-block">N = int(input('Digite a quantidade de números '))<br>soma = 0<br>contador = 0<br><br>while contador < N:<br>    numero = float(input(f'Digite o {contador+1} número: '))<br>    soma += numero<br>    contador += 1<br><br>media = soma / N<br>print(f'A media dos {N} números é: {media:.2f}')</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Conversor de Temperatura Celsius / Fahrenheit Estático</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_02_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Algoritmo iterativo estruturado para gerar uma matriz/tabela comparativa sistemática de 20 linhas sequenciais de temperaturas, partindo do ponto inicial de 32° Fahrenheit, calculando e alinhando suas equivalências em Celsius.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Conversão Algorítmica</span>
+                        <button onclick="toggleCode('code-py2')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py2" class="hidden mt-4 pt-2">
+                        <span class="code-block">print("CONVERSAO FAHREINHEIT – CELSIUS")<br>print("CELSIUS        FAHREINHEIT")<br>f = 32<br>contador = 0<br><br>while contador < 20:<br>    c = (5/9) * (f - 32)<br>    print(f"{c:8.2f}        {f:8.2f}")<br>    f += 1<br>    contador += 1</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Conversor Termométrico Customizável por Escopo</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_03_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Evolução do conversor termo-dinâmico que permite ao usuário estabelecer as balizas de início e fim da amostragem em Fahrenheit, controlando o processamento matemático do laço de repetição condicional de forma dinâmica.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Escopo Dinâmico</span>
+                        <button onclick="toggleCode('code-py3')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py3" class="hidden mt-4 pt-2">
+                        <span class="code-block">print("CONVERSAO FAHREINHEIT – CELSIUS")<br>print("CELSIUS        FAHREINHEIT")<br>inicio = int(input("Digite o valor inicial em Fahrenheit: "))<br>fim = int(input("Digite o valor final em Fahrenheit: "))<br>f = inicio<br><br>while f &lt;= fim:<br>    c = (5/9) * (f - 32)<br>    print(f"{c:8.2f}        {f:8.2f}")<br>    f += 1</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Cálculo de Médias com Laço de Repetição Definido (For)</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_04_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Algoritmo clássico de iteração que gerencia a entrada de notas acadêmicas sequenciais para uma turma delimitada fixa de 4 alunos, utilizando um laço estruturado <code>for i in range()</code> com indexação visual limpa.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">For Loop Iteration</span>
+                        <button onclick="toggleCode('code-py4')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py4" class="hidden mt-4 pt-2">
+                        <span class="code-block">soma = 0<br>N = 4<br><br>for i in range(1, N+1):<br>    nota = float(input(f"Digite a nota do aluno número {i}: "))<br>    soma += nota<br><br>media = soma / N<br>print(f"Média da turma = {media:.2f}")</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Acumulador com Interrupção por Flag de Saída</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_05_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Implementação de um laço contínuo infinito (<code>while True</code>) que atua como coletor numérico e realiza a contagem exata dos inputs digitados, sendo interrompido imediatamente pela inserção do sentinela/flag <code>-1</code>.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Flags / Break</span>
+                        <button onclick="toggleCode('code-py5')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py5" class="hidden mt-4 pt-2">
+                        <span class="code-block">soma = 0<br>contador = 0<br><br>while text_0:<br>    numero = int(input("Digite um número (-1 para sair): "))<br>    if numero == -1:<br>        break<br>    soma += numero<br>    contador += 1<br><br>print(f"Quantidade de números: {contador}")<br>print(f"Soma dos valores: {soma}")</span>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between" data-category="python">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-2.5 py-1 text-xs font-bold uppercase rounded bg-blue-100 text-blue-800 dark:bg-blue-950/40 dark:text-blue-400">Script Python (.py)</span>
+                            <i class="fa-brands fa-python text-2xl text-emerald-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Somatório Seletivo de Inteiros Positivos</h3>
+                        <p class="text-xs text-emerald-500 font-mono mt-1 mb-3">Arquivo: ex_06_3_whi_tu_cdml_22610699 _Davi_Teles.py</p>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 text-justify mb-3">
+                            Algoritmo computacional lógico focado em somatório exclusivo de valores numéricos estritamente positivos. Executa a quebra estrutural do fluxo lógico caso detecte qualquer número menor do que zero (negativos).
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                        <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 rounded">Filtros Condicionais</span>
+                        <button onclick="toggleCode('code-py6')" class="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"><i class="fa-solid fa-code mr-1"></i> Ver Código</button>
+                    </div>
+                    <div id="code-py6" class="hidden mt-4 pt-2">
+                        <span class="code-block">soma = 0<br><br>while text_0:<br>    numero = int(input("Digite um número (negativo para sair): "))<br>    if numero &lt; 0:<br>        break<br>    soma += numero<br><br>print(f"Soma dos valores positivos: {soma}")</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-12">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-emerald-500">Conectar</h2>
+                <p class="text-3xl font-extrabold text-slate-900 dark:text-white">Canais de Comunicação Direta</p>
+                <div class="h-1 w-12 bg-blue-600 mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+                <div class="md:col-span-5 bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Informações</h3>
+                        <div class="space-y-4">
+                            <a href="tel:61991917133" class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                <div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Telefone Celular</p>
+                                    <p class="text-sm font-medium">(61) 9 9191-7133</p>
+                                </div>
+                            </a>
+                            <a href="mailto:dviteles@gmail.com" class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                <div class="w-10 h-10 rounded-full bg-emerald-50 dark:bg-emerald-950 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">E-mail Profissional</p>
+                                    <p class="text-sm font-medium">dviteles@gmail.com</p>
+                                </div>
+                            </a>
+                            <a href="https://github.com/Daviteles077" target="_blank" class="flex items-center gap-3 p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                <div class="w-10 h-10 rounded-full bg-purple-50 dark:bg-purple-950 flex items-center justify-center text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">GitHub Repositório</p>
+                                    <p class="text-sm font-medium">github.com/Daviteles077</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-900 text-xs text-slate-400 text-center md:text-left">
+                        Disponível para propostas de estágio, projetos de análise freelance e parcerias colaborativas acadêmicas.
+                    </div>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! (Simulação)');" class="md:col-span-7 bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold mb-2">Envie uma Mensagem</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Seu Nome</label>
+                            <input type="text" required class="w-full px-4 py-2 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Seu E-mail</label>
+                            <input type="email" required class="w-full px-4 py-2 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Assunto</label>
+                        <input type="text" required class="w-full px-4 py-2 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Mensagem</label>
+                        <textarea rows="4" required class="w-full px-4 py-2 text-sm bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:outline-none focus:border-blue-500 transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2.5 font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors cursor-pointer shadow-md shadow-blue-500/10">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Disparar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-950 transition-colors duration-300">
+        <p>&copy; 2026 Davi Teles Correa Pontes. Todos os direitos reservados.</p>
+        <p class="mt-1 font-mono text-[10px] text-slate-500">Desenvolvido com Tailwind CSS & Vanilla JS. Hospedado via GitHub Pages.</p>
     </footer>
 
+    <script>
+        // Menu sanduíche mobile toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fechar menu mobile ao clicar em algum link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Alternador de Código Ocultável (Projetos)
+        function toggleCode(id) {
+            const block = document.getElementById(id);
+            block.classList.toggle('hidden');
+        }
+
+        // Sistema Dinâmico de Filtro de Projetos
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.project-tab-btn');
+            
+            // Alterar visual dos botões das abas
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700', 'dark:bg-slate-900', 'dark:text-slate-300');
+            });
+            
+            // Destacar botão clicado
+            event.target.classList.remove('bg-slate-100', 'text-slate-700', 'dark:bg-slate-900', 'dark:text-slate-300');
+            event.target.classList.add('bg-blue-600', 'text-white');
+
+            // Filtragem real dos elementos do DOM
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Gerenciamento Avançado de Dark/Light Mode com LocalStorage
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Verificar se havia preferência prévia ou adotar padrão Dark para área técnica
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+            themeIcon.className = 'fa-solid fa-moon text-lg';
+        } else {
+            document.documentElement.classList.add('dark');
+            themeIcon.className = 'fa-solid fa-sun text-lg';
+            localStorage.setItem('theme', 'dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon text-lg';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-lg';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
