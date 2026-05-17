@@ -30,10 +30,20 @@
     <span> | </span>
     <a href="#-projeto-final">🏗️ Ver Código do Projeto</a>
   </h3>
-<a href="https://daviteles077.github.io/portiflio-projeto-final-Bootcamp/" 
+<a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/" 
    target="_blank" 
-   style="display: inline-block; padding: 16px 32px; background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; font-family: 'Segoe UI', sans-serif; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 50px; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4); text-align: center;">
-  ✨ ACESSAR MEU PORTFÓLIO &raquo;
+   style="display: inline-block; 
+          padding: 16px 40px; 
+          font-size: 18px; 
+          font-weight: bold; 
+          color: #ffffff; 
+          background: linear-gradient(135deg, #ff416c, #ff4b2b); 
+          border-radius: 8px; 
+          text-decoration: none; 
+          box-shadow: 0 8px 20px rgba(255, 65, 108, 0.3); 
+          text-transform: uppercase; 
+          letter-spacing: 1px;">
+   🔥 Ver Projeto Final do Bootcamp
 </a>
 
 
