@@ -26,24 +26,21 @@
   </p>
 
   <h3>
-    <a href="LINK_DO_SEU_SITE_NO_GITHUB_PAGES">🌐 Visualizar Portfólio Live</a>
-    <span> | </span>
-    <a href="#-projeto-final">🏗️ Ver Código do Projeto</a>
-  </h3>
-<a href="https://daviteles077.github.io/portifolio-projeto-final-Bootcamp/" 
-   target="_blank" 
-   style="display: inline-block; 
-          padding: 16px 40px; 
-          font-size: 18px; 
-          font-weight: bold; 
-          color: #ffffff; 
-          background: linear-gradient(135deg, #ff416c, #ff4b2b); 
-          border-radius: 8px; 
-          text-decoration: none; 
-          box-shadow: 0 8px 20px rgba(255, 65, 108, 0.3); 
-          text-transform: uppercase; 
+    <a href="https://daviteles077.github.io/portifolio/"   
+   target="_blank"   
+   style="display: inline-block;   
+          padding: 16px 40px;   
+          font-size: 18px;   
+          font-weight: bold;   
+          color: #ffffff;   
+          background: linear-gradient(135deg, #16a085, #1abc9c);   
+          border-radius: 8px;   
+          text-decoration: none;   
+          box-shadow: 0 8px 20px rgba(22, 160, 133, 0.3);   
+          text-transform: uppercase;   
           letter-spacing: 1px;">
-   🔥 Ver Projeto Final do Bootcamp
+   💼 Acessar Meu PortfolioHUB
+</a>
 </a>
 
 
